@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "880927519307",
+    "firebase_url": "https://wired-monkey.firebaseio.com",
+    "project_id": "wired-monkey",
+    "storage_bucket": "wired-monkey.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:880927519307:android:c9e04f2a9922b7b5",
+        "android_client_info": {
+          "package_name": "com.bwired.stickers.wiredmonkey"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "880927519307-fau56fd6n7nrsttdscdhgfd98u97hgfh.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "880927519307-fau56fd6n7nrsttdscdhgfd98u97hgfh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAwI2tXnmEC9sIPzlBg2imSHOPJFReCks"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
