@@ -27,11 +27,11 @@ import com.squareup.picasso.Picasso;
 public  class ImagePagerAdapter extends PagerAdapter {
 
     private final Context mContext;
-    private final Sticker[] stickers = new Sticker[12];
+    private final Sticker[] stickers = new Sticker[11];
 
-    public ImagePagerAdapter(Context context, Sticker[] stickers) {
+    public ImagePagerAdapter(Context context, Sticker[] sticker) {
         mContext = context;
-        copyElementsToArray(stickers);
+        copyElementsToArray(sticker);
     }
 
 
@@ -65,9 +65,9 @@ public  class ImagePagerAdapter extends PagerAdapter {
         container.removeView((ImageView) object);
     }
 
-    private void copyElementsToArray(Sticker[] stickers) {
+    private void copyElementsToArray(Sticker[] sticker) {
         for (int i = 0; i < stickers.length; i++) {
-            this.stickers[i] = stickers[i];
+            stickers[i] = sticker[i];
         }
 
     }
