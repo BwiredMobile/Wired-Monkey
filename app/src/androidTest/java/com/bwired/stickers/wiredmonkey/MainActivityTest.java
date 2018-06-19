@@ -1,8 +1,19 @@
+/*
+ * Copyright ©2017 Bwired Technologies Inc. All Rights Reserved
+ *
+ * We design, build & support a large volume, highly scalable and engaging digital products.
+ * We have aligned ourselves with best-in-class technologies across Web, Mobile and Cloud Computing.
+ * We work with clients who share our passion for innovative solutions. Let’s build something great together.
+ *
+ * https://bwired.ca/
+ *
+ * This class is for testing
+ *
+ * Developed by Riya Varghese
+ */
+
 package com.bwired.stickers.wiredmonkey;
 
-
-
-import android.content.ComponentName;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 import android.test.suitebuilder.annotation.LargeTest;

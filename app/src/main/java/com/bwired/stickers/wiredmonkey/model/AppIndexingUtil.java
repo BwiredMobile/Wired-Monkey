@@ -1,3 +1,17 @@
+/*
+ * Copyright ©2017 Bwired Technologies Inc. All Rights Reserved
+ *
+ * We design, build & support a large volume, highly scalable and engaging digital products.
+ * We have aligned ourselves with best-in-class technologies across Web, Mobile and Cloud Computing.
+ * We work with clients who share our passion for innovative solutions. Let’s build something great together.
+ *
+ * https://bwired.ca/
+ *
+ * This class is a firebase app indexing util to load stickers from firbase account
+ *
+ * Developed by Riya Varghese
+ */
+
 package com.bwired.stickers.wiredmonkey.model;
 
 import android.content.Context;
@@ -16,10 +30,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * See firebase app indexing api code lab
- * https://codelabs.developers.google.com/codelabs/app-indexing/#0
- */
 
 public class AppIndexingUtil {
     private static final String STICKER_URL_PATTERN = "mystickers://sticker/%s";

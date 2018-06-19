@@ -1,3 +1,17 @@
+/*
+ * Copyright ©2017 Bwired Technologies Inc. All Rights Reserved
+ *
+ * We design, build & support a large volume, highly scalable and engaging digital products.
+ * We have aligned ourselves with best-in-class technologies across Web, Mobile and Cloud Computing.
+ * We work with clients who share our passion for innovative solutions. Let’s build something great together.
+ *
+ * https://bwired.ca/
+ *
+ *  A PagerAdapter that wraps around another PagerAdapter to handle paging wrap-around.
+ *
+ * Developed by Riya Varghese
+ */
+
 package com.bwired.stickers.wiredmonkey.adapter;
 
 import android.database.DataSetObserver;
@@ -7,9 +21,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
-/**
- * A PagerAdapter that wraps around another PagerAdapter to handle paging wrap-around.
- */
 public class InfinitePagerAdapter extends PagerAdapter {
 
     private static final String TAG = "InfinitePagerAdapter";

@@ -1,3 +1,16 @@
+/*
+ * Copyright ©2017 Bwired Technologies Inc. All Rights Reserved
+ *
+ * We design, build & support a large volume, highly scalable and engaging digital products.
+ * We have aligned ourselves with best-in-class technologies across Web, Mobile and Cloud Computing.
+ * We work with clients who share our passion for innovative solutions. Let’s build something great together.
+ *
+ * https://bwired.ca/
+ *
+ * Model class for Sticker
+ *
+ * Developed by Riya Varghese
+ */
 package com.bwired.stickers.wiredmonkey.model;
 
 public class Sticker {

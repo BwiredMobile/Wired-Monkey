@@ -1,3 +1,17 @@
+/*
+ * Copyright ©2017 Bwired Technologies Inc. All Rights Reserved
+ *
+ * We design, build & support a large volume, highly scalable and engaging digital products.
+ * We have aligned ourselves with best-in-class technologies across Web, Mobile and Cloud Computing.
+ * We work with clients who share our passion for innovative solutions. Let’s build something great together.
+ *
+ * https://bwired.ca/
+ *
+ * Activity class to load the stickers, share and go to the website
+ *
+ * Developed by Riya Varghese
+ */
+
 package com.bwired.stickers.wiredmonkey.view;
 
 import android.app.Activity;
@@ -41,7 +55,7 @@ import java.util.Arrays;
 
 public class MonkeyActivity extends Activity {
     ViewPager viewPager;
-    ProgressDialog _dialog ;
+    ProgressDialog _dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +65,12 @@ public class MonkeyActivity extends Activity {
         StrictMode.setVmPolicy(builder.build());
         builder.detectFileUriExposure();
 
-
-//        TextView tx = (TextView)findViewById(R.id.txtView);
-//        Typeface custom_font = Typeface.createFromAsset(getAssets(),  "fonts/slackey_regular.ttf");
-//        tx.setTypeface(custom_font);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         Object[] objectList = StickersDataFactory.getAllStickerReference().toArray();
         final Sticker[] stickerArray = Arrays.copyOf(objectList, objectList.length, Sticker[].class);
         final PagerAdapter stickerAdapter = new InfinitePagerAdapter(new ImagePagerAdapter(this, stickerArray));
         viewPager.setOffscreenPageLimit(12);
         viewPager.setAdapter(stickerAdapter);
-
-
 
 
         ImageView left_btn = (ImageView) findViewById(R.id.left);
@@ -73,7 +81,6 @@ public class MonkeyActivity extends Activity {
         left_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println("Child Count Left..."+viewPager.getCurrentItem());
                 viewPager.setCurrentItem(viewPager.getCurrentItem() - 1);
             }
         });
@@ -81,13 +88,7 @@ public class MonkeyActivity extends Activity {
         right_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 viewPager.setCurrentItem((viewPager.getCurrentItem() + 1));
-
-//                System.out.println("Child Count If..."+(viewPager.getCurrentItem()+1));
-               /* if(viewPager.getCurrentItem() >= viewPager.getAdapter().getCount()) {
-                    viewPager.getAdapter().notifyDataSetChanged();
-                }*/
             }
         });
 
@@ -95,13 +96,10 @@ public class MonkeyActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                WebView mWebview  = new WebView(MonkeyActivity.this);
+                WebView mWebview = new WebView(MonkeyActivity.this);
                 mWebview.getSettings().setJavaScriptEnabled(true);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://bwired.ca/"));
                 startActivity(intent);
-
-
-//                setContentView(mWebview );
             }
         });
 
@@ -109,11 +107,18 @@ public class MonkeyActivity extends Activity {
             @Override
             public void onClick(View view) {
                 Picasso.with(getApplicationContext()).load(stickerArray[viewPager.getCurrentItem()].getImageUrl()).into(new com.squareup.picasso.Target() {
-                    @Override public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                         prepareShareIntent(bitmap);
                     }
-                    @Override public void onBitmapFailed(Drawable errorDrawable) { }
-                    @Override public void onPrepareLoad(Drawable placeHolderDrawable) { }
+
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+                    }
                 });
 
             }
@@ -138,7 +143,7 @@ public class MonkeyActivity extends Activity {
     public Uri getLocalBitmapUri(Bitmap bmp) {
         Uri bmpUri = null;
         try {
-            File file =  new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
+            File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
             FileOutputStream out = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
             out.close();
@@ -148,7 +153,6 @@ public class MonkeyActivity extends Activity {
         }
         return bmpUri;
     }
-
 
 
 }

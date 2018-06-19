@@ -1,14 +1,25 @@
+/*
+ * Copyright ©2017 Bwired Technologies Inc. All Rights Reserved
+ *
+ * We design, build & support a large volume, highly scalable and engaging digital products.
+ * We have aligned ourselves with best-in-class technologies across Web, Mobile and Cloud Computing.
+ * We work with clients who share our passion for innovative solutions. Let’s build something great together.
+ *
+ * https://bwired.ca/
+ *
+ * This is an adapter class for view pager to load the images
+ *
+ * Developed by Riya Varghese
+ */
+
 package com.bwired.stickers.wiredmonkey.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
 import com.bwired.stickers.wiredmonkey.R;
 import com.bwired.stickers.wiredmonkey.model.Sticker;
 import com.squareup.picasso.Picasso;
