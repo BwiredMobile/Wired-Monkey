@@ -56,6 +56,7 @@ import java.util.Arrays;
 public class MonkeyActivity extends Activity {
     ViewPager viewPager;
     ProgressDialog _dialog;
+    FileOutputStream out;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +66,7 @@ public class MonkeyActivity extends Activity {
         StrictMode.setVmPolicy(builder.build());
         builder.detectFileUriExposure();
 
-        viewPager = (ViewPager) findViewById(R.id.view_pager);
+        viewPager = findViewById(R.id.view_pager);
         Object[] objectList = StickersDataFactory.getAllStickerReference().toArray();
         final Sticker[] stickerArray = Arrays.copyOf(objectList, objectList.length, Sticker[].class);
         final PagerAdapter stickerAdapter = new InfinitePagerAdapter(new ImagePagerAdapter(this, stickerArray));
@@ -73,10 +74,10 @@ public class MonkeyActivity extends Activity {
         viewPager.setAdapter(stickerAdapter);
 
 
-        ImageView left_btn = (ImageView) findViewById(R.id.left);
-        ImageView right_btn = (ImageView) findViewById(R.id.right);
-        ImageView share_btn = (ImageView) findViewById(R.id.share);
-        ImageView link_btn = (ImageView) findViewById(R.id.link);
+        ImageView left_btn = findViewById(R.id.left);
+        ImageView right_btn = findViewById(R.id.right);
+        ImageView share_btn = findViewById(R.id.share);
+        ImageView link_btn = findViewById(R.id.link);
 
         left_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -144,12 +145,22 @@ public class MonkeyActivity extends Activity {
         Uri bmpUri = null;
         try {
             File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), "share_image_" + System.currentTimeMillis() + ".png");
-            FileOutputStream out = new FileOutputStream(file);
+            out = new FileOutputStream(file);
             bmp.compress(Bitmap.CompressFormat.PNG, 90, out);
-            out.close();
             bmpUri = Uri.fromFile(file);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Exception.." + e);
+        } finally {
+            // TODO some more try catching here so that if output closing
+            // fails you can still try to close second one and log the errors!
+            try {
+                out.flush();
+                out.close();
+                out = null;
+                System.gc();
+            } catch (Exception e) {
+                System.out.println("Exception.." + e);
+            }
         }
         return bmpUri;
     }

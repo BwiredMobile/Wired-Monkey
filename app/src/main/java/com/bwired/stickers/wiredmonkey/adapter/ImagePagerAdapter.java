@@ -27,11 +27,11 @@ import com.squareup.picasso.Picasso;
 public  class ImagePagerAdapter extends PagerAdapter {
 
     private final Context mContext;
-    private final Sticker[] stickers;
+    private final Sticker[] stickers = new Sticker[12];
 
     public ImagePagerAdapter(Context context, Sticker[] stickers) {
-        this.mContext = context;
-        this.stickers = stickers;
+        mContext = context;
+        copyElementsToArray(stickers);
     }
 
 
@@ -42,13 +42,12 @@ public  class ImagePagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((ImageView) object);
+        return view == object;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        Context context = mContext;
-        ImageView imageView = new ImageView(context);
+        ImageView imageView = new ImageView(mContext);
         final Sticker sticker = stickers[position];
         Picasso.with(mContext)
                 .load(sticker.getImageUrl())
@@ -57,13 +56,20 @@ public  class ImagePagerAdapter extends PagerAdapter {
                 .resize(300, 300)
                 .into(imageView);
 
-        ((ViewPager) container).addView(imageView, 0);
+        container.addView(imageView, 0);
         return imageView;
     }
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
-        ((ViewPager) container).removeView((ImageView) object);
+        container.removeView((ImageView) object);
+    }
+
+    private void copyElementsToArray(Sticker[] stickers) {
+        for (int i = 0; i < stickers.length; i++) {
+            this.stickers[i] = stickers[i];
+        }
+
     }
 
 }
